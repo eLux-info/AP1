@@ -116,7 +116,6 @@ Les sessions PHP sont utilisées pour gérer l'authentification des utilisateurs
 ## Sécurité
 - **Hashage des mots de passe** : Utilisation de `password_hash` pour sécuriser les mots de passe.
 - **Requêtes préparées** : Protection contre les injections SQL.
-- **HTTPS** : Recommandé pour toutes les connexions.
 
 ## Dépendances
 - **PHP** : Langage principal pour le backend.
