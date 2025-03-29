@@ -1,7 +1,6 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    // Si l'utilisateur n'est pas un admin, rediriger vers la page de connexion
     header("Location: index.php");
     exit();
 }

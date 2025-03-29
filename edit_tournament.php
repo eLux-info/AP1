@@ -5,15 +5,13 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     exit();
 }
 
-include "connexion.php"; // Inclure la connexion à la base de données
+include "connexion.php";
 
-// Vérifier si l'ID du tournoi est passé
 if (!isset($_GET['id'])) {
     header("Location: tournois.php");
     exit();
 }
 
-// Récupérer le tournoi à modifier
 $id = $_GET['id'];
 $sql = "SELECT * FROM Tournois WHERE id = :id";
 $stmt = $pdo->prepare($sql);
@@ -26,13 +24,11 @@ if (!$tournament) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
     $nom = $_POST['nom'];
     $date_tournoi = $_POST['date_tournoi'];
     $description = $_POST['description'];
     $status = $_POST['status'];
 
-    // Préparer et exécuter la requête de mise à jour
     $sql = "UPDATE Tournois SET nom = :nom, date_tournoi = :date_tournoi, description = :description, status = :status WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     
@@ -44,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'id' => $id,
     ]);
 
-    // Rediriger vers la page des tournois après la modification
     header("Location: tournois.php");
     exit();
 }

@@ -1,9 +1,17 @@
 # ArrasGame
 
 ## Introduction
-ArrasGame est une plateforme web permettant aux utilisateurs de s'inscrire à des tournois, de gérer les inscriptions et d'administrer les utilisateurs. Le site propose des fonctionnalités adaptées aux utilisateurs et aux administrateurs.
+ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vidéo entre amis ou en compétition. Ce projet s'adresse aux joueurs occasionnels, aux clubs de gaming, et aux organisateurs de compétitions.
 
 ## Installation
+
+### Prérequis
+- **PHP** : Version 8.0 ou supérieure.
+- **MySQL** : Version 5.7 ou supérieure.
+- **Serveur Web** : Apache ou Nginx.
+- **Composer** (optionnel) : Pour gérer les dépendances PHP.
+
+### Étapes d'installation
 1. Clonez le dépôt :
    ```bash
    git clone [URL_DU_DEPOT]
@@ -19,23 +27,65 @@ ArrasGame est une plateforme web permettant aux utilisateurs de s'inscrire à de
    $username = 'UtilisateurPHPmyAdmin';
    $password = 'MotDePassePHPmyAdmin';
    ```
-5. Lancez votre serveur local (ex. : Laragon, XAMPP) et accédez au site via `http://localhost/ArrasGame`.
+5. Assurez-vous que les permissions des dossiers sont correctes :
+   ```bash
+   chmod -R 755 /var/www/ArrasGame
+   ```
+6. Lancez votre serveur local (ex. : Laragon, XAMPP) et accédez au site via `http://localhost/ArrasGame`.
+
+### Configuration avancée
+- Si vous utilisez Docker, voici un exemple de configuration :
+   ```yaml
+   version: '3.8'
+   services:
+     web:
+       image: php:8.0-apache
+       volumes:
+         - ./ArrasGame:/var/www/html
+       ports:
+         - "8080:80"
+       depends_on:
+         - db
+     db:
+       image: mysql:5.7
+       environment:
+         MYSQL_ROOT_PASSWORD: root
+         MYSQL_DATABASE: ArrasGame
+   ```
 
 ## Structure du projet
+
+### Arborescence
+```
+├── css/
+│   ├── bootstrap.css
+│   ├── responsive.css
+│   └── ...
+├── fonts/
+│   └── AndaleMono.ttf
+├── images/
+│   ├── call.png
+│   ├── console.png
+│   └── ...
+├── js/
+│   ├── bootstrap.js
+│   ├── custom.js
+│   └── ...
+├── connexion.php
+├── create_inscription.php
+├── ...
+├── index.php
+├── tournois.php
+└── README.md
+```
+
+### Fichiers critiques
+- **connexion.php** : Gère la connexion à la base de données.
 - **index.php** : Page d'accueil du site.
-- **login.html** : Page de connexion des utilisateurs.
-- **register1.php** et **register2.php** : Pages d'inscription des utilisateurs.
-- **tournois.php** : Liste des tournois et gestion des inscriptions.
-- **profile_admin.php** : Gestion des utilisateurs pour les administrateurs.
-- **create_tournament.php**, **edit_tournament.php**, **delete_tournament.php** : Gestion des tournois.
-- **create_user_form.php**, **create_user.php**, **edit_user.php**, **delete_user.php** : Gestion des utilisateurs.
-- **register_tournament.php** : Inscription des utilisateurs aux tournois.
-- **delete_inscription.php**, **edit_inscription.php**, **create_inscription.php** : Gestion des inscriptions.
-- **connexion.php** : Fichier de connexion à la base de données.
-- **css/** : Contient les fichiers CSS pour le style.
-- **js/** : Contient les fichiers JavaScript pour les interactions.
+- **tournois.php** : Affiche la liste des tournois et les inscriptions.
 
 ## Fonctionnalités principales
+
 ### Utilisateurs
 - Inscription et connexion sécurisées.
 - Inscription à des tournois ouverts.
@@ -46,53 +96,45 @@ ArrasGame est une plateforme web permettant aux utilisateurs de s'inscrire à de
 - Gestion des tournois : création, modification et suppression.
 - Gestion des inscriptions : création, modification et suppression.
 
-## API (Endpoints principaux)
-### Inscription d'un utilisateur
-- **URL** : `/register2.php`
-- **Méthode** : POST
-- **Paramètres** :
-  ```json
-  {
-    "username": "string",
-    "email": "string",
-    "password": "string"
-  }
-  ```
+### Cas d'usage
+1. Un utilisateur s'inscrit sur la plateforme.
+2. Il se connecte et choisit un tournoi auquel participer.
+3. L'administrateur peut gérer les inscriptions et les tournois.
 
-### Connexion d'un utilisateur
-- **URL** : `/login.php`
-- **Méthode** : POST
-- **Paramètres** :
-  ```json
-  {
-    "username": "string",
-    "password": "string"
-  }
-  ```
+## API
 
-### Inscription à un tournoi
-- **URL** : `/register_tournament.php`
-- **Méthode** : POST
-- **Paramètres** :
-  ```json
-  {
-    "tournoi_id": "integer"
-  }
-  ```
+### Endpoints principaux
+| Endpoint                  | Méthode | Paramètres              |
+|---------------------------|---------|-------------------------|
+| `/register2.php`          | POST    | `username`, `email`, `password` |
+| `/login.php`              | POST    | `username`, `password`  |
+| `/register_tournament.php`| POST    | `tournoi_id`            |
+
+### Authentification
+Les sessions PHP sont utilisées pour gérer l'authentification des utilisateurs. Les informations de session incluent l'ID utilisateur, le nom d'utilisateur et le rôle.
+
+## Sécurité
+- **Hashage des mots de passe** : Utilisation de `password_hash` pour sécuriser les mots de passe.
+- **Requêtes préparées** : Protection contre les injections SQL.
+- **HTTPS** : Recommandé pour toutes les connexions.
 
 ## Dépendances
 - **PHP** : Langage principal pour le backend.
 - **MySQL** : Base de données pour stocker les utilisateurs, tournois et inscriptions.
-- **Bootstrap** : Framework CSS pour le design.
-- **jQuery** : Bibliothèque JavaScript pour les interactions.
+- **Bootstrap 5.3** : Framework CSS pour le design.
+- **jQuery 3.6** : Bibliothèque JavaScript pour les interactions.
 
 ## Contributions
+
+### Guide pour contribuer
 1. Forkez le dépôt.
 2. Créez une branche pour vos modifications :
    ```bash
    git checkout -b feature/nom-de-la-fonctionnalité
    ```
-3. Soumettez une pull request.
+3. Respectez les standards de code (ex. : PSR-12 pour PHP).
+4. Vérifiez que les tests unitaires passent avec `phpunit`.
+5. Soumettez une pull request.
 
 ## Licence
 Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT).

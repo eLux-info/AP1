@@ -1,21 +1,18 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    // Si l'utilisateur n'est pas un admin, rediriger vers la page de connexion
     header("Location: index.php");
     exit();
 }
 
-include "connexion.php"; // Inclure la connexion à la base de données
+include "connexion.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les données du formulaire
     $nom = $_POST['nom'];
     $date_tournoi = $_POST['date_tournoi'];
     $description = $_POST['description'];
     $status = $_POST['status'];
 
-    // Préparer et exécuter la requête d'insertion
     $sql = "INSERT INTO Tournois (nom, date_tournoi, description, status) VALUES (:nom, :date_tournoi, :description, :status)";
     $stmt = $pdo->prepare($sql);
     
@@ -26,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         'status' => $status,
     ]);
 
-    // Rediriger vers la page des tournois après la création
     header("Location: tournois.php");
     exit();
 }

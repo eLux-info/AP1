@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #222222;
+            background-color: #000000;
         }
 
         .container {
@@ -28,11 +28,11 @@
         h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: white; /* Titre en blanc */
+            color: white;
         }
 
         label {
-            color: white; /* Labels en blanc */
+            color: white;
         }
 
         input[type="text"],
@@ -43,7 +43,8 @@
             margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
-            color: black; /* Texte dans les champs */
+            color: black;
+            box-sizing: border-box;
         }
 
         button {
@@ -57,7 +58,7 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #28164b;
         }
 
         .link {
@@ -66,7 +67,7 @@
         }
 
         .link a {
-            color: white; /* Lien en blanc */
+            color: white;
             text-decoration: none;
         }
 

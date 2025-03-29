@@ -11,7 +11,6 @@
     <label for="utilisateur_id">Nom d'utilisateur:</label>
     <select name="utilisateur_id" required>
         <?php
-        // Connexion à la base de données
         $host = 'localhost';
         $db = 'ArrasGame';
         $user = 'ton_utilisateur';
@@ -22,7 +21,6 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Récupérer les utilisateurs
         $sql = "SELECT id, nom FROM Utilisateurs";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -38,7 +36,6 @@
     <label for="tournoi_id">Sélectionner un tournoi:</label>
     <select name="tournoi_id" required>
         <?php
-        // Récupérer les tournois
         $sql = "SELECT id, nom_tournoi FROM Tournois";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
@@ -55,12 +52,10 @@
 </form>
 
 <?php
-// Traitement de l'inscription
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $utilisateur_id = $_POST['utilisateur_id'];
     $tournoi_id = $_POST['tournoi_id'];
 
-    // Insertion dans la table Inscriptions
     $sql = "INSERT INTO Inscriptions (utilisateur_id, tournoi_id) VALUES ('$utilisateur_id', '$tournoi_id')";
     
     if ($conn->query($sql) === TRUE) {
@@ -70,7 +65,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Fermer la connexion
 $conn->close();
 ?>
 

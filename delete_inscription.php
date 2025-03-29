@@ -1,14 +1,12 @@
 <?php
 session_start();
-include "connexion.php"; // Inclure la connexion à la base de données
+include "connexion.php";
 
-// Vérifier si l'utilisateur est admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: tournois.php');
     exit();
 }
 
-// Récupérer l'inscription à supprimer
 if (!isset($_GET['id'])) {
     header('Location: tournois.php');
     exit();
@@ -16,7 +14,6 @@ if (!isset($_GET['id'])) {
 
 $inscription_id = $_GET['id'];
 
-// Supprimer l'inscription
 $sql = "DELETE FROM Inscriptions WHERE id = :id";
 $stmt = $pdo->prepare($sql);
 if ($stmt->execute(['id' => $inscription_id])) {

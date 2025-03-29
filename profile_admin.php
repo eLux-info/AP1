@@ -1,12 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    // Si l'utilisateur n'est pas un admin, rediriger vers une autre page
     header("Location: index.php");
     exit();
 }
 
-include "connexion.php"; // Inclure la connexion à la base de données
+include "connexion.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -18,16 +17,16 @@ include "connexion.php"; // Inclure la connexion à la base de données
     <link rel="stylesheet" href="css/bootstrap.css">
     <style>
     .table th, .table td {
-        color: black !important; /* Force la couleur du texte en noir */
+        color: black !important;
     }
 
     .table a {
-        color: black !important; /* Force la couleur des liens en noir */
-        text-decoration: none; /* Supprime le soulignement des liens */
+        color: black !important;
+        text-decoration: none;
     }
 
     .table a:hover {
-        color: #333 !important; /* Légèrement plus clair au survol */
+        color: #333 !important;
     }
 </style>
 </head>
@@ -35,12 +34,10 @@ include "connexion.php"; // Inclure la connexion à la base de données
     <div class="container">
         <h1 class="mt-5">Gérer les Utilisateurs</h1>
 
-        <!-- Bouton "Créer" -->
         <div class="header-section">
-            <a href="create_user_form.php" class="create-button">Créer</a> <!-- Lien vers le formulaire de création d'utilisateur -->
+            <a href="create_user_form.php" class="create-button">Créer</a>
         </div>
 
-        <!-- Table des utilisateurs -->
         <table class="table table-striped mt-4">
             <thead>
                 <tr>
@@ -53,7 +50,6 @@ include "connexion.php"; // Inclure la connexion à la base de données
             </thead>
             <tbody>
                 <?php
-                // Récupérer et afficher tous les utilisateurs
                 $sql = "SELECT * FROM Utilisateurs";
                 $stmt = $pdo->query($sql);
                 while ($row = $stmt->fetch()) {

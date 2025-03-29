@@ -1,14 +1,12 @@
 <?php
 session_start();
-include "connexion.php"; // Inclure la connexion à la base de données
+include "connexion.php";
 
-// Vérifier si l'utilisateur est admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: tournois.php');
     exit();
 }
 
-// Récupérer l'inscription à modifier
 if (!isset($_GET['id'])) {
     header('Location: tournois.php');
     exit();
@@ -16,12 +14,10 @@ if (!isset($_GET['id'])) {
 
 $inscription_id = $_GET['id'];
 
-// Traitement du formulaire lors de la soumission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $utilisateur_id = $_POST['utilisateur_id'];
     $tournoi_id = $_POST['tournoi_id'];
 
-    // Mettre à jour l'inscription
     $sql = "UPDATE Inscriptions SET utilisateur_id = :utilisateur_id, tournoi_id = :tournoi_id WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     if ($stmt->execute(['utilisateur_id' => $utilisateur_id, 'tournoi_id' => $tournoi_id, 'id' => $inscription_id])) {
@@ -32,12 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Récupérer l'inscription actuelle
 $currentInscription = $pdo->prepare("SELECT * FROM Inscriptions WHERE id = :id");
 $currentInscription->execute(['id' => $inscription_id]);
 $inscription = $currentInscription->fetch(PDO::FETCH_ASSOC);
 
-// Récupérer les utilisateurs et les tournois
 $users = $pdo->query("SELECT * FROM Utilisateurs")->fetchAll(PDO::FETCH_ASSOC);
 $tournaments = $pdo->query("SELECT * FROM Tournois")->fetchAll(PDO::FETCH_ASSOC);
 ?>
