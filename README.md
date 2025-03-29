@@ -19,7 +19,7 @@ ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vid
 2. Placez le projet dans le répertoire de votre serveur local (ex. : `c:\laragon\www\ArrasGame`).
 3. Configurez la base de données :
    - Créez une base de données nommée `ArrasGame`.
-   - Importez le fichier SQL contenant la structure et les données nécessaires.
+   - Importez le fichier SQL contenu dans /database.
 4. Configurez la connexion à la base de données dans `connexion.php` :
    ```php
    $host = '127.0.0.1';
