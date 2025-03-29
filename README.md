@@ -123,17 +123,5 @@ Les sessions PHP sont utilisées pour gérer l'authentification des utilisateurs
 - **Bootstrap 5.3** : Framework CSS pour le design.
 - **jQuery 3.6** : Bibliothèque JavaScript pour les interactions.
 
-## Contributions
-
-### Guide pour contribuer
-1. Forkez le dépôt.
-2. Créez une branche pour vos modifications :
-   ```bash
-   git checkout -b feature/nom-de-la-fonctionnalité
-   ```
-3. Respectez les standards de code (ex. : PSR-12 pour PHP).
-4. Vérifiez que les tests unitaires passent avec `phpunit`.
-5. Soumettez une pull request.
-
 ## Licence
 Ce projet est sous licence [MIT](https://opensource.org/licenses/MIT).
