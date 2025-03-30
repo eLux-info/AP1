@@ -61,7 +61,7 @@ ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vid
      db:
        image: mysql:5.7
        environment:
-         MYSQL_ROOT_PASSWORD: root
+         MYSQL_ROOT_PASSWORD: MotDePasseMySQL
          MYSQL_DATABASE: ArrasGame
    ```
 
