@@ -2,6 +2,9 @@
 
 ## Accès à l'application
 - Lien du site déployé : [ArrasGame](https://lux.enzo.worldlite.fr/ArrasGame/index.php)
+- Compte de test :
+  - Admin : admin / admin1234
+  - Utilisateurs : guest / guest1234
 
 ## Introduction
 ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vidéo entre amis ou en compétition. Ce projet s'adresse aux joueurs occasionnels, aux clubs de gaming, et aux organisateurs de compétitions.
