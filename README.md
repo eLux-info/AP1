@@ -90,6 +90,8 @@ ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vid
 ├── tournois.php
 └── README.md
 ```
+
+### Diagramme de classe
 ```mermaid
 classDiagram
 direction LR
@@ -117,7 +119,7 @@ direction LR
     }
 
 	note for Inscriptions "Clés étrangères : utilisateurs.id, tournois.id"
-	note for Utilisateurs "Mot de passe stocké\nen hash (password_hash)"
+	note for Utilisateurs "Mot de passe stocké en hash (password_hash)"
 	note for Tournois "Statut par défaut : 'ouvert'"
 
     Utilisateurs "1" -- "n" Inscriptions : "Crée"
