@@ -26,7 +26,7 @@ ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vid
 ### Étapes d'installation
 1. Clonez le dépôt :
    ```bash
-   git clone [URL_DU_DEPOT]
+   git clone https://github.com/eLux-info/AP1/tree/main
    ```
 2. Placez le projet dans le répertoire de votre serveur local (ex. : `c:\laragon\www\ArrasGame`).
 3. Configurez la base de données :
