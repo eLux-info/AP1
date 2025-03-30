@@ -12,7 +12,7 @@ ArrasGame est une plateforme web conçue pour organiser des tournois de jeux vid
 ### Technologies utilisées
 - **Backend** : PHP 8.2 (PDO), MySQL 8.0
 - **Frontend** : Bootstrap 5.3, jQuery 3.6
-- **API** : PHP natif (RESTful)
+- **API** : PHP natif
 
 ## Installation
 
