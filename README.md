@@ -1,5 +1,7 @@
 # ArrasGame
 
+![alt tag](https://github.com/user-attachments/assets/60e620af-1b7c-4779-bbdd-467ac5d52315)
+
 ## Accès à l'application
 - Lien du site déployé : [ArrasGame](https://lux.enzo.worldlite.fr/ArrasGame/index.php)
 - Compte de test :
